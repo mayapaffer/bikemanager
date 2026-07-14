@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike manager</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <header class="header">
+       <h1 class="logo">MK Bikes - Bike Manager</h1>
+
+       <p class="subtitle">Sistema de Gerenciamento da Oficina</p>
+    </header>
+
+    <main class="container">
+
+        <div class="card">
+            <h2 class="card-title">Clientes</h2>
+
+            <p class="card-description">Cadastrar e gerenciar clientes.</p>
+
+            <button class="btn" id="btnCliente">Acessar Cliente</button>
+
+            <p id="mensagem"></p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">Bicicletas</h2>
+
+            <p class="card-description">Cadastrar e gerenciar bicicletas.</p>
+
+            <button class="btn" id="btnBicicleta">Acessar Bicicleta</button>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">Ordens de Serviço</h2>
+
+            <p class="card-description">Cadastrar e gerenciar ordens de serviço.</p>
+
+            <button class="btn" id="btnOs">Acessar Ordem de Serviço</button>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">Caixa</h2>
+
+            <p class="card-description">Cadastrar e gerenciar movimentações financeiras.</p>
+
+            <button class="btn" id="btnCaixa">Acessar Movimentação</button>
+        </div>
+    </main>   
+   
+    <section class="form-container">
+        
+        <form id="formCliente">
+            
+            <h2>Cadastrar Cliente</h2>
+            
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Digite o Nome do Cliente">
+
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" placeholder="Digite o Telefone">
+
+            <button type="submit" class="btn" id="btnCliente">Salvar Cliente</button>
+
+        </form>
+
+        <form id="formBicicleta">
+
+             <h2>Cadastrar Bicicleta</h2>   
+
+
+             <label for="clienteBike">Cliente</label>
+             <input type="text" id="clienteBike" placeholder="Nome do Cliente">
+             
+             <label for="marca">Marca</label>
+             <input type="text" id="marca" placeholder="Digite a marca da Bicicleta">
+
+             <label for="modelo">Modelo</label>
+             <input type="text" id="modelo" placeholder="Digite o modelo da Bicicleta">
+
+             <label for="aro">Aro</label>
+             <input type="number" id="aro" placeholder="Digite o aro da Bicicleta">
+
+             <label for="cor">Cor</label>
+             <input type="text" id="cor" placeholder="Digite a cor da Bicicleta">
+
+             <label for="chassi">Chassi</label>
+             <input type="text" id="chassi" placeholder="Digite o chassi da Bicicleta">
+
+             <button type="submit">Salvar Bicicleta</button>
+
+        </form>
+
+
+    </section>
+
+    <div id="listaClientes"></div>
+    <div id="listaBicicletas"></div>
+    <p id="mensagemBike"></p>
+</body>
+</html>
