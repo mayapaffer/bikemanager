@@ -9,32 +9,8 @@ let clienteEditando = null
 
 let bicicletaEditando = null
 
-function cadastrarCliente(nome, telefone) {
+let ordens = []
 
-    const cliente = {
-        nome,
-        telefone
-    }
-
-    clientes.push(cliente)
-
-    console.log("Cliente cadastrado com sucesso!")
-}
-
-function cadastrarBicicleta(cliente, marca, modelo, aro, cor, chassi) { 
-    
-    const bicicleta = {
-        cliente,
-        marca,
-        modelo,
-        aro,
-        cor,
-        chassi
-    }
-
-    bicicletas.push(bicicleta)
-    console.log("Bicicleta cadastrada com sucesso!")
-}
 
 function abrirOs(numero, cliente, dataEntrada, chassi, servico, valor) {
    
@@ -146,13 +122,6 @@ const btnBicicleta = document.getElementById("btnBicicleta")
 const btnOs = document.getElementById("btnOs")
 
 const btnCaixa = document.getElementById("btnCaixa")
-
-
-const formContainer = document.querySelector(".form-container")
-btnCliente.addEventListener("click", function () {
-    formContainer.style.display = "block"
-})
-
 
 const formCliente = document.getElementById("formCliente")
 
@@ -436,7 +405,7 @@ function editarBicicleta (chassi) {
 
     const bicicleta = bicicletas.find(
 
-        bicicleta => bicicleta.chassi === chassiBike
+        bicicleta => bicicleta.chassi === chassi
     )
 
     if (!bicicleta) {
@@ -451,6 +420,91 @@ function editarBicicleta (chassi) {
     document.getElementById("chassi").value = bicicleta.chassi
 }
 
+
+
+const formOs = document.getElementById("formOs")
+
+
+const clienteOs = document.getElementById("clienteOs")
+const bikeOs = document.getElementById("bikeOs")
+const servico = document.getElementById("servico")
+const valor = document.getElementById("valor")
+const status = document.getElementById("status")
+
+formOs.addEventListener("submit", function(event) {
+    event.preventDefault()
+
+    console.log("Submit da OS executou!")
+
+    const novaOs = {
+        numero: ordensServico.length + 1,
+        cliente: clienteOs.value,
+        bicicleta: bikeOs.value,
+        servico: servico.value,
+        valor: valor.value,
+        status: status.value
+    }
+
+    ordensServico.push(novaOs)
+
+    listarOrdens()
+
+    console.log("OS criada", novaOs)
+
+    formOs.reset()
+})
+
+const listaOrdens = document.getElementById("listaOrdens")
+
+function listarOrdens () {
+
+        listaOrdens.innerHTML = ""
+
+        ordensServico.forEach(os => {
+
+            const card = document.createElement("div")
+
+            card.classList.add("cliente-card")
+
+            card.innerHTML = `
+            
+                <h3>OS #${os.numero}</h3>
+                <p>Cliente: ${os.cliente}</p>
+                <p>Bicicleta: ${os.bicicleta}</p>
+                <p>Valor: ${os.valor}</p>
+                <p>Status: ${os.status}</p>                                        
+            `
+
+        listaOrdens.appendChild(card)    
+        })
+
+}
+
+
+function esconderFormulario () {
+
+    formCliente.style.display = "none"
+    formBicicleta.style.display = "none"
+    formOs.style.display = "none"
+}
+
+btnCliente.addEventListener("click", () => {
+
+        esconderFormulario()
+        formCliente.style.display = "block"
+})
+
+btnBicicleta.addEventListener("click", () => {
+
+        esconderFormulario()
+        formBicicleta.style.display = "block"
+})
+
+btnOs.addEventListener("click", () => {
+
+        esconderFormulario()
+        formOs.style.display = "block"
+})
 
 
 
